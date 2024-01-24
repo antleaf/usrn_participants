@@ -1,0 +1,5 @@
+log_level: debug
+coloured_output: true
+db_connection_url: 'sqlite://./data/data.sqlite'
+reset_db: true
+csv_data_folder: './data'
