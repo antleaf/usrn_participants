@@ -74,6 +74,11 @@ h1 {
   font-weight: bold;
 }
 
+h1.page-title {
+  border-bottom: 2px solid #555555;
+  text-align: center;
+}
+
 h2 {
   font-size: 1.6em
 }
@@ -95,38 +100,20 @@ h6 {
 }
 
 
-
-blockquote {
-  font-style: italic;
-  margin-left: 20px;
-  padding: 10px;
-  margin-right: 20px;
-  border-left: 3px solid #cdcdcd;
-  padding-top: 0;
-  padding-bottom: 0;
-}
-
 div.right-aligned {
   text-align: right;
 }
 
-img,iframe {
-  max-width: 90%;
-  display: block;
-  margin-top: 15px;
-  margin-bottom: 15px;
-  margin-left: auto;
-  margin-right: auto;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  padding: 10px;
+
+.field {
+  margin-bottom: 10px;
 }
 
+.field-name {
+  text-align: right;
+  font-weight: bold;
+}
 
-.invisible {
-  display: inline-block;
-  font-size: 0;
-  height: 0;
-  line-height: 0;
-  position: absolute;
-  width: 0;
+.field-name::after {
+  content: ": ";
 }

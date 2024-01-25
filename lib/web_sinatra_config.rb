@@ -10,3 +10,4 @@ require 'haml'
 set :haml, { escape_html: false }
 set :views, settings.root + '/web/templates'
 set :public_folder, settings.root + '/web/assets'
+set :site_title, 'USRN Participants'

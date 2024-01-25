@@ -1,0 +1,10 @@
+%table.table.table-bordered
+  %thead
+    %tr
+    %th Name
+  %tbody
+    - @consumers.each do |consumer|
+      %tr
+        %td
+          %a{href:"/consumers/#{consumer.id}"}
+            = consumer.name

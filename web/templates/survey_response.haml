@@ -1,0 +1,30 @@
+%div.row.field
+  %div.col-2
+    %div.field-name Repository
+  %div.col
+    %a{href: "/repositories/#{@survey_response.repository.id}"}=@survey_response.repository.name
+%div.row.field
+  %div.col-2
+    %div.field-name Date
+  %div.col
+    =@survey_response.timestamp.strftime("%Y-%m-%d")
+%div.row.field
+  %div.col-2
+    %div.field-name Output types
+  %div.col
+    =@survey_response.other_output_types
+%div.row.field
+  %div.col-2
+    %div.field-name Disciplines
+  %div.col
+    =@survey_response.disciplines
+%div.row.field
+  %div.col-2
+    %div.field-name Depositing users
+  %div.col
+    =@survey_response.other_depositors
+%div.row.field
+  %div.col-2
+    %div.field-name Consuming users
+  %div.col
+    =@survey_response.other_consumers

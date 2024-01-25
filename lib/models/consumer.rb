@@ -4,7 +4,7 @@ class Consumer < Sequel::Model
   set_primary_key :id
   unrestrict_primary_key
 
-  many_to_many :repositories, join_table: :consumers_repositories
+  many_to_many :repositories, join_table: :consumers_survey_responses
 
   def self.populate_from_csv(path)
     begin

@@ -1,13 +1,1 @@
-%table.table.table-bordered
-  %thead
-    %tr
-    %th Name
-    %th Owner
-    %th
-  %tbody
-    - @repositories.each do |repository|
-      %tr
-        %td
-          %a{href:"/repositories/#{repository.id}"}
-            = repository.name
-        %td= repository.owner
+=haml :'partials/repositories_table'

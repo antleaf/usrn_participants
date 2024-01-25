@@ -3,9 +3,10 @@ require 'sequel'
 DB = Sequel.connect(DB_CONNECTION_URL)
 
 if RESET_DB then
-  DB.drop_table? :depositors_repositories
-  DB.drop_table? :consumers_repositories
-  DB.drop_table? :output_types_repositories
+  DB.drop_table? :depositors_survey_responses
+  DB.drop_table? :consumers_survey_responses
+  DB.drop_table? :output_types_survey_responses
+  DB.drop_table? :survey_responses
   DB.drop_table? :repositories
   DB.drop_table? :platforms
   DB.drop_table? :output_types
@@ -42,6 +43,13 @@ DB.create_table? :repositories do
   # TrueClass :publish,:default=>false
   foreign_key :platform_id, :platforms, :type => 'varchar'
   String :version
+  String :notes, text: true
+  end
+
+DB.create_table? :survey_responses do
+  primary_key :id
+  Time :timestamp
+  foreign_key :repository_id, :repositories, :type => 'varchar'
   String :role, text: true
   String :other_output_types
   String :other_depositors
@@ -84,22 +92,20 @@ DB.create_table? :repositories do
   String :other_technologies, text: true
   String :future_integrations, text: true
   String :anything_else, text: true
-
-  String :notes, text: true
 end
 
 ################# JOIN TABLES ##################################
-DB.create_table? :output_types_repositories do
+DB.create_table? :output_types_survey_responses do
   foreign_key :output_type_id, :output_types, :type => 'varchar'
-  foreign_key :repository_id, :repositories
+  foreign_key :survey_response_id, :survey_responses
 end
 
-DB.create_table? :depositors_repositories do
+DB.create_table? :depositors_survey_responses do
   foreign_key :depositor_id, :depositors, :type => 'varchar'
-  foreign_key :repository_id, :repositories
+  foreign_key :survey_response_id, :survey_responses
 end
 
-DB.create_table? :consumers_repositories do
+DB.create_table? :consumers_survey_responses do
   foreign_key :consumer_id, :consumers, :type => 'varchar'
-  foreign_key :repository_id, :repositories
+  foreign_key :survey_response_id, :survey_responses
 end
