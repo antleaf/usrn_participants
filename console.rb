@@ -10,4 +10,5 @@ if RESET_DB then
 end
 
 
+
 LOG.info("Process completed")

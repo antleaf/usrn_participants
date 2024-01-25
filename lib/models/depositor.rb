@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-class OutputType < Sequel::Model
+class Depositor < Sequel::Model
   set_primary_key :id
   unrestrict_primary_key
 
-  many_to_many :repositories, join_table: :output_types_repositories
+  many_to_many :repositories, join_table: :depositors_repositories
 
   def self.populate_from_csv(path)
     begin
@@ -15,7 +15,7 @@ class OutputType < Sequel::Model
           name: row['Name']
         )
       end
-      LOG.info("Loaded output_type data from #{path}")
+      LOG.info("Loaded depositor data from #{path}")
     rescue Exception => e
       LOG.error(e)
     end
