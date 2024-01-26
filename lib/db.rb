@@ -7,6 +7,7 @@ if RESET_DB then
   DB.drop_table? :consumers_survey_responses
   DB.drop_table? :output_types_survey_responses
   DB.drop_table? :survey_responses
+  DB.drop_table? :surveys
   DB.drop_table? :repositories
   DB.drop_table? :platforms
   DB.drop_table? :output_types
@@ -44,10 +45,17 @@ DB.create_table? :repositories do
   foreign_key :platform_id, :platforms, :type => 'varchar'
   String :version
   String :notes, text: true
-  end
+end
+
+DB.create_table? :surveys do
+  String :id, :primary_key => true
+  String :name
+  String :notes, text: true
+end
 
 DB.create_table? :survey_responses do
   primary_key :id
+  foreign_key :survey_id, :surveys, :type => 'varchar'
   Time :timestamp
   foreign_key :repository_id, :repositories, :type => 'varchar'
   String :role, text: true

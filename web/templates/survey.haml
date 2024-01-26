@@ -1,0 +1,13 @@
+%table.table.table-bordered
+  %thead
+    %tr
+    %th ID
+    %th Repository
+    %th Timestamp
+  %tbody
+    - @survey.survey_responses.each do |sr|
+      %tr
+        %td= sr.id
+        %td=sr.repository.name
+        %td=sr.timestamp.strftime("%Y-%m-%d")
+

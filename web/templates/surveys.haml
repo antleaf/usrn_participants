@@ -1,0 +1,5 @@
+%ul
+  - @surveys.each do |survey|
+    %li
+      %a{href: "/surveys/#{survey.id}"}
+        = survey.name

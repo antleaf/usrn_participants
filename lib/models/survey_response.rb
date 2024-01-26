@@ -5,6 +5,7 @@ class SurveyResponse < Sequel::Model
   set_primary_key :id
   unrestrict_primary_key
   many_to_one :repository
+  many_to_one :survey
   many_to_many :output_types, join_table: :output_types_survey_responses
   many_to_many :depositors, join_table: :depositors_survey_responses
   many_to_many :consumers, join_table: :consumers_survey_responses
@@ -35,12 +36,12 @@ class SurveyResponse < Sequel::Model
   enum :technologies_counter, not_aware: 1, considering: 2, planning_to_implement: 3, actively_implementing: 4, already_implemented: 5, rejected: 6, prefix: true
   enum :technologies_fairicat, not_aware: 1, considering: 2, planning_to_implement: 3, actively_implementing: 4, already_implemented: 5, rejected: 6, prefix: true
 
-  def self.populate_from_csv(path)
+  def self.populate_from_csv(survey_id,path)
     begin
       csv_data = read_csv_data(path)
       csv_data.each do |row|
         sr = SurveyResponse.create
-
+        sr.survey = Survey[survey_id]
         sr.repository = Repository[row['Repository ID']]
 
         sr.timestamp = Time.parse(row[1])

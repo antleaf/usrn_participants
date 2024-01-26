@@ -23,20 +23,32 @@ get '/repositories/:id' do
   haml :repository, :layout => :'layout'
 end
 
+get '/surveys' do
+  @page_title = 'All Surveys'
+  @surveys = Survey.all
+  haml :surveys, :layout => :'layout'
+end
+
+get '/surveys/:id' do
+  @survey = Survey[params[:id]]
+  @page_title = "Survey: #{@survey.name}"
+  haml :survey, :layout => :'layout'
+end
+
 get '/survey_responses/:id' do
   @survey_response = SurveyResponse[params[:id]]
   @page_title = "Survey Response: #{@survey_response.repository.name}"
   haml :survey_response, :layout => :'layout'
 end
 
-get '/consumers' do
-  @consumers = Consumer.all
-  @page_title = "All Consumers"
-  haml :consumers, :layout => :'layout'
-end
-
-get '/consumers/:id' do
-  @consumer = Consumer[params[:id]]
-  @page_title = "Consumer: #{@consumer.name}"
-  haml :consumer, :layout => :'layout'
-end
+# get '/consumers' do
+#   @consumers = Consumer.all
+#   @page_title = "All Consumers"
+#   haml :consumers, :layout => :'layout'
+# end
+#
+# get '/consumers/:id' do
+#   @consumer = Consumer[params[:id]]
+#   @page_title = "Consumer: #{@consumer.name}"
+#   haml :consumer, :layout => :'layout'
+# end
