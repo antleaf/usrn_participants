@@ -1,5 +1,12 @@
-%ul
-  - @surveys.each do |survey|
-    %li
-      %a{href: "/surveys/#{survey.id}"}
-        = survey.name
+-# %ul
+-#   - @surveys.each do |survey|
+-#     %li
+-#       %a{href: "/surveys/#{survey.id}"}
+-#         = survey.name
+
+
+%form{action: "/surveys", method: "post"}
+  %select{name: "survey_id"}
+    - @surveys.each do |survey|
+      %option{value: survey.id}= survey.name
+  %input{type: "submit", value: "Select"}

@@ -4,5 +4,7 @@
   %div.col
     =@consumer.name
 
--@repositories = @consumer.survey_responses.repositories
-=haml :'partials/repositories_table'
+-@repositories = @consumer.survey_responses.each do |sr|
+  =sr.repository.name
+-# -@repositories = @consumer.survey_responses.repositories
+-# =haml :'partials/repositories_table'

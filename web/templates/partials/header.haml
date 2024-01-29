@@ -1,8 +1,18 @@
-%h1=settings.site_title
-%ul.nav
-  %li.nav-item
-    %a.nav-link{href: "/"} Home
-  %li.nav-item
-    %a.nav-link{href: "/repositories"} Repositories
-  %li.nav-item
-    %a.nav-link{href: "/surveys"} Surveys
+%div.row
+  %div.col-9
+    %h1=settings.site_title
+  %div.col-3
+    %div#survey-id
+      Survey:
+      =session[:survey_id]
+%div.row
+  %div.col
+    %ul.nav
+      %li.nav-item
+        %a.nav-link{href: "/"} Home
+      %li.nav-item
+        %a.nav-link{href: "/repositories"} Repositories
+      %li.nav-item
+        %a.nav-link{href: "/surveys"} Surveys
+      %li.nav-item
+        %a.nav-link{href: "/consumers"} Consumers

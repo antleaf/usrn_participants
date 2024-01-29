@@ -5,6 +5,11 @@ require './lib/web_sinatra_config'
 require './lib/db'
 require './lib/model'
 
+before do
+  if session[:survey_id] == nil
+    session[:survey_id] = settings.default_survey_id
+  end
+end
 
 get '/' do
   @page_title = 'Home'
@@ -35,20 +40,25 @@ get '/surveys/:id' do
   haml :survey, :layout => :'layout'
 end
 
+post '/surveys' do
+  session[:survey_id] = params[:survey_id]
+  redirect '/surveys'
+end
+
 get '/survey_responses/:id' do
   @survey_response = SurveyResponse[params[:id]]
   @page_title = "Survey Response: #{@survey_response.repository.name}"
   haml :survey_response, :layout => :'layout'
 end
 
-# get '/consumers' do
-#   @consumers = Consumer.all
-#   @page_title = "All Consumers"
-#   haml :consumers, :layout => :'layout'
-# end
-#
-# get '/consumers/:id' do
-#   @consumer = Consumer[params[:id]]
-#   @page_title = "Consumer: #{@consumer.name}"
-#   haml :consumer, :layout => :'layout'
-# end
+get '/consumers' do
+  @consumers = Consumer.all
+  @page_title = "All Consumers"
+  haml :consumers, :layout => :'layout'
+end
+
+get '/consumers/:id' do
+  @consumer = Consumer[params[:id]]
+  @page_title = "Consumer: #{@consumer.name}"
+  haml :consumer, :layout => :'layout'
+end
