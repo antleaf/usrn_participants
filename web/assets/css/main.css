@@ -120,3 +120,7 @@ div.right-aligned {
 div#survey-id {
     text-align: right;
 }
+
+label {
+    font-weight: bold;
+}

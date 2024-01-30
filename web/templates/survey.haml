@@ -1,15 +1,14 @@
+%h2="Responses (#{@survey.survey_responses.count} records)"
 %table.table.table-bordered
   %thead
     %tr
-    %th ID
-    %th Repository
-    %th Timestamp
+      %th Repository
+      %th Timestamp
   %tbody
     - @survey.survey_responses.each do |sr|
       %tr
         %td
-          %a{href: "/survey_responses/#{sr.id}"}
-            =sr.id
-        %td=sr.repository.name
+          %a{href: "/repositories/#{sr.repository.id}"}
+            =sr.repository.name
         %td=sr.timestamp.strftime("%Y-%m-%d")
 

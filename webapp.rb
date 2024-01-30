@@ -6,9 +6,14 @@ require './lib/db'
 require './lib/model'
 
 before do
+  @surveys = Survey.all
   if session[:survey_id] == nil
     session[:survey_id] = settings.default_survey_id
   end
+end
+
+def responses_for_current_survey
+  SurveyResponse.where(survey_id: session[:survey_id])
 end
 
 get '/' do
@@ -24,6 +29,7 @@ end
 
 get '/repositories/:id' do
   @repository = Repository[params[:id]]
+  @survey_response = SurveyResponse.where(repository_id: @repository.id, survey_id: session[:survey_id]).first
   @page_title = "Repository: #{@repository.name}"
   haml :repository, :layout => :'layout'
 end
@@ -45,12 +51,6 @@ post '/surveys' do
   redirect '/surveys'
 end
 
-get '/survey_responses/:id' do
-  @survey_response = SurveyResponse[params[:id]]
-  @page_title = "Survey Response: #{@survey_response.repository.name}"
-  haml :survey_response, :layout => :'layout'
-end
-
 get '/consumers' do
   @consumers = Consumer.all
   @page_title = "All Consumers"
@@ -59,6 +59,7 @@ end
 
 get '/consumers/:id' do
   @consumer = Consumer[params[:id]]
+  @repositories = @consumer.survey_responses.map { |r| r.repository }
   @page_title = "Consumer: #{@consumer.name}"
   haml :consumer, :layout => :'layout'
 end

@@ -1,10 +1,13 @@
-%table.table.table-bordered
+%table.table.table-bordered.sorted-table
   %thead
     %tr
     %th Name
+    %th Repositories
   %tbody
     - @consumers.each do |consumer|
       %tr
         %td
           %a{href:"/consumers/#{consumer.id}"}
             = consumer.name
+        %td.number
+          =consumer.survey_responses.count

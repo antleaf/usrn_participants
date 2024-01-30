@@ -3,7 +3,7 @@
     %tr
     %th Name
     %th Homepage
-    %th Survey
+    -# %th Survey
   %tbody
     - @repositories.each do |repository|
       %tr
@@ -13,8 +13,8 @@
         %td
           %a{href:repository.url}
             = repository.owner
-        %td
-          -repository.survey_responses.each do |survey_response|
-            %a{href:"/survey_responses/#{survey_response.id}"}
-              = survey_response.timestamp.strftime("%Y-%m-%d")
+        -# %td
+        -#   -repository.survey_responses.each do |survey_response|
+        -#     %a{href:"/survey_responses/#{survey_response.id}"}
+        -#       = survey_response.timestamp.strftime("%Y-%m-%d")
 

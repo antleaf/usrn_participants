@@ -3,8 +3,12 @@
     %h1=settings.site_title
   %div.col-3
     %div#survey-id
-      Survey:
-      =session[:survey_id]
+      %form{action: "/surveys", method: "post"}
+        %label Survey:
+        %select{name: "survey_id"}
+          - @surveys.each do |survey|
+            %option{value: survey.id}= survey.name
+        %input.btn.btn-sm.btn-secondary{type: "submit", value: "Select"}
 %div.row
   %div.col
     %ul.nav
