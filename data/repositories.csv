@@ -8,7 +8,7 @@ ID,Name,URL,Owner,Platform,Version,Notes
 7,Open Access Repository,http://oar.princeton.edu/,Princeton University,dspace,5,
 8,,,Stanford University,unknown,,
 9,TAMU-CC Institutional Repository,https://tamucc-ir.tdl.org/home,Texas Digital Library,dspace,7,
-10,,,University of Arizona,unknown,,
+10,UA Campus Repository,https://repository.arizona.edu/,University of Arizona,unknown,,
 11,Knowledge@UChicago,https://knowledge.uchicago.edu/,University of Chicago,tind,,
 12,CU Scholar,https://scholar.colorado.edu/,University of Colorado Boulder,hyrax,2 - but upgrading to 5,
 13,INDIGO,http://indigo.uic.edu/,University of Illinois,figshare,,
@@ -18,6 +18,6 @@ ID,Name,URL,Owner,Platform,Version,Notes
 17,AgEcon,https://ageconsearch.umn.edu/,University of Minnesota,tind,,
 18,UNT Scholarly Works,https://digital.library.unt.edu/scholarlyworks,University of North Texas - Denton,bespoke,,
 19,Texas ScholarWorks,https://repositories.lib.utexas.edu/home,"University of Texas, Austin",dspace,7,
-20,,,Washington State University,unknown,,
+20,Research Exchange,https://rex.libraries.wsu.edu/esploro/,Washington State University,unknown,,
 21,eScholarship,https://escholarship.org/,University of California,bespoke,,Custom system; further details: https://help.escholarship.org/support/solutions/folders/9000181333
 22,CSUSB ScholarWorks,https://scholarworks.lib.csusb.edu/,"California State University, San Bernardino",digital-commons,,

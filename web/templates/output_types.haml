@@ -1,0 +1,13 @@
+%table.table.table-bordered.sorted-table
+  %thead
+    %tr
+    %th Name
+    %th Repositories
+  %tbody
+    - @output_types.each do |output_type|
+      %tr
+        %td
+          %a{href:"/output-types/#{output_type.id}"}
+            = output_type.name
+        %td.number
+          =output_type.survey_responses.count

@@ -1,0 +1,13 @@
+%table.table.table-bordered.sorted-table
+  %thead
+    %tr
+    %th Name
+    %th Repositories
+  %tbody
+    - @depositors.each do |depositor|
+      %tr
+        %td
+          %a{href:"/depositors/#{depositor.id}"}
+            = depositor.name
+        %td.number
+          =depositor.survey_responses.count

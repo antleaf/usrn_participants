@@ -3,29 +3,62 @@
     %div.field-name Name
   %div.col
     =@repository.name
-
   %div.row.field
     %div.col-2
       %div.field-name Date
     %div.col
-      =@survey_response.timestamp.strftime("%Y-%m-%d")
+      =@sr.timestamp.strftime("%Y-%m-%d")
+  %div.row.field
+    %div.col-2
+      %div.field-name Role of the repository
+    %div.col
+      =process_text(@sr.role)
   %div.row.field
     %div.col-2
       %div.field-name Output types
     %div.col
-      =@survey_response.other_output_types
+      =@sr.other_output_types
   %div.row.field
     %div.col-2
       %div.field-name Disciplines
     %div.col
-      =@survey_response.disciplines
+      =process_text(@sr.disciplines)
   %div.row.field
     %div.col-2
       %div.field-name Depositing users
     %div.col
-      =@survey_response.other_depositors
+      %div.row
+        %div.col
+          %ul
+            -Depositor.all.each do |depositor|
+              %li
+                =depositor.name
+                -if @sr.depositors.include?(depositor)
+                  ✅
+                -else
+                  ❌
+    %div.col
+      %h4 Other depositors
+      =@sr.other_depositors
   %div.row.field
     %div.col-2
       %div.field-name Consuming users
     %div.col
-      =@survey_response.other_consumers
+      %div.row
+        %div.col
+          %ul
+            -Consumer.all.each do |consumer|
+              %li
+                =consumer.name
+                -if @sr.consumers.include?(consumer)
+                  ✅
+                -else
+                  ❌
+        %div.col
+          %h4 Other consumers
+          =@sr.other_consumers
+  %div.row.field
+    %div.col-2
+      %div.field-name Policies
+    %div.col
+      =process_text(@sr.policies)

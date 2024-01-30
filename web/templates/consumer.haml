@@ -1,10 +1,3 @@
-%div.row.field
-  %div.col-2
-    %div.field-name Name
-  %div.col
-    =@consumer.name
 
--# = @survey_responses.count
--# =@repositories.count
 %h2="Repositories with this consumer (#{@repositories.count} records)"
 =haml :'partials/repositories_table'

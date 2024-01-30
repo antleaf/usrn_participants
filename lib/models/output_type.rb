@@ -4,7 +4,7 @@ class OutputType < Sequel::Model
   set_primary_key :id
   unrestrict_primary_key
 
-  many_to_many :repositories, join_table: :output_types_repositories
+  many_to_many :survey_responses, join_table: :output_types_survey_responses
 
   def self.populate_from_csv(path)
     begin
