@@ -13,6 +13,15 @@ RUN mkdir -p /root/.ssh; \
     apt-get install -y openssh-client software-properties-common; \
     ssh-keyscan github.com >> /root/.ssh/known_hosts
 
-RUN git clone -q https://github.com/antleaf/SComCaT.git /usr/src/app
+COPY ./cmd.sh ./cmd.sh
 
-RUN #gem install bundler && bundle install
+#
+#RUN git clone -q https://github.com/antleaf/usrn_participants.git /usr/src/app
+#
+#RUN gem install bundler && bundle install
+
+EXPOSE 9292
+
+CMD ["sh", "cmd.sh"]
+
+#CMD bundle exec rackup
