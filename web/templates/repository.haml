@@ -17,6 +17,18 @@
     %div.col-2
       %div.field-name Output types
     %div.col
+      %div.row
+        %div.col
+          %ul
+            -OutputType.all.each do |output_type|
+              %li
+                =humanise(output_type.name)
+                -if @sr.output_types.include?(output_type)
+                  ✅
+                -else
+                  ❌
+    %div.col
+      %h4 Other output types
       =@sr.other_output_types
   %div.row.field
     %div.col-2
@@ -32,7 +44,7 @@
           %ul
             -Depositor.all.each do |depositor|
               %li
-                =depositor.name
+                =humanise(depositor.name)
                 -if @sr.depositors.include?(depositor)
                   ✅
                 -else
@@ -49,7 +61,7 @@
           %ul
             -Consumer.all.each do |consumer|
               %li
-                =consumer.name
+                =humanise(consumer.name)
                 -if @sr.consumers.include?(consumer)
                   ✅
                 -else
@@ -62,3 +74,33 @@
       %div.field-name Policies
     %div.col
       =process_text(@sr.policies)
+
+  %div.row.field
+    %div.col-2
+      %div.field-name To what extent do you agree that each of the following is part of the repository’s mission?
+    %div.col
+      %table.table.table-bordered.sorted-table
+        %thead
+          %tr
+            %th Mission
+            %th Strongly disagree
+            %th Disagree
+            %th Neutral
+            %th Agree
+            %th Strongly agree
+        %tbody
+          - missions(@sr).each do |mission|
+            %tr
+              %td
+                =mission[:name]
+              - for i in [:strongly_disagree, :disagree, :neutral, :agree, :strongly_agree]
+                %td
+                  -if mission[:value] == i
+                    ✅
+                  -else
+                    &nbsp;
+    %div.row.field
+      %div.col-2
+        %div.field-name Nelson Memo
+      %div.col
+        =@sr.nelson_awareness
