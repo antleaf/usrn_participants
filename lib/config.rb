@@ -20,7 +20,7 @@ LOG = Logger.new(STDOUT)
 # LOGGER.formatter = proc { |severity, datetime, progname, msg| "#{severity}: #{msg} - #{caller[4]}\n"}
 LOG.formatter = proc do |severity,datetime,progname, msg|
   if ["ERROR","FATAL"].include? severity then
-    "#{severity}: #{msg}\n".light_red
+    "#{severity}: #{msg} #{caller[4]}\n".light_red
   elsif severity == "DEBUG" then
     "#{severity}: #{msg}\n".light_yellow
   else

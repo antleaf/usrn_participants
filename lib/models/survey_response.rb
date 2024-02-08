@@ -43,9 +43,7 @@ class SurveyResponse < Sequel::Model
         sr = SurveyResponse.create
         sr.survey = Survey[survey_id]
         sr.repository = Repository[row['Repository ID']]
-
         sr.timestamp = Time.parse(row[1])
-
         sr.role = row[4]
         sr.other_output_types = row[5]
 
@@ -132,7 +130,7 @@ class SurveyResponse < Sequel::Model
 
         sr.save
       end
-      LOG.info("Loaded repository data from #{path}")
+      LOG.info("Loaded survey response data from #{path}")
     rescue Exception => e
       LOG.error(e)
     end
