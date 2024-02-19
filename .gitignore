@@ -1,4 +1,6 @@
 .DS_Store
 .idea
 /.env
-/data_src/
+/data/archive
+/data/*.sqlite
+/data/*.csv
