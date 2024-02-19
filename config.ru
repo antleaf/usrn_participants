@@ -3,4 +3,5 @@ require './webapp'
 
 Bundler.require
 
-USRNParticipantsApp.run!
+# USRNParticipantsApp.run!
+run USRNParticipantsApp
