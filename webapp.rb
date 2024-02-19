@@ -39,6 +39,5 @@ class USRNParticipantsApp < Sinatra::Base
     haml :home, :layout => :'layout'
   end
 
-  # run! if app_file == $0
 end
 
