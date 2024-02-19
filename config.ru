@@ -1,6 +1,6 @@
 require 'bundler'
+require './webapp'
 
 Bundler.require
 
-require './webapp'
-run USRNParticipantsApp
+USRNParticipantsApp.run!
