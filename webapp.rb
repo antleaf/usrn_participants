@@ -9,6 +9,7 @@ require './lib/routes/repositories'
 require './lib/routes/consumers'
 require './lib/routes/depositors'
 require './lib/routes/output_types'
+require './lib/routes/users'
 require 'haml'
 require 'dotenv/load'
 

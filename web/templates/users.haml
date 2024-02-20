@@ -1,0 +1,91 @@
+%div.row.gx-5
+  %div.col-sm-6
+    %h2.chart-caption
+      Depositors
+    - chart_data = ['Repositories']
+    - chart_labels = []
+    - @depositors.each do |depositor|
+      - chart_labels << depositor.name
+      - chart_data << [depositor.survey_responses.count]
+
+    %div#depositor-chart
+
+    :javascript
+      var chart = bb.generate({
+        bindto: "#depositor-chart",
+        data: {
+          type: "bar",
+          columns: [
+              #{chart_data}
+          ]
+        },
+        axis: {
+        x: {
+          type: "category",
+          categories: #{chart_labels}
+        }
+      },
+      });
+
+    %table.table.table-bordered.sorted-table
+      %caption
+        ="All depositors (#{@depositors.count} records)"
+      %thead
+        %tr
+          %th Name
+          %th Repositories
+      %tbody
+        - @depositors.each do |depositor|
+          %tr
+            %td
+              %a{href:"/depositors/#{depositor.id}"}
+                = depositor.name
+            %td.number
+              =depositor.survey_responses.count
+
+  %div.col-sm-6
+    %h2.chart-caption
+      Consumers
+    - chart_data = ['Repositories']
+    - chart_labels = []
+    - @consumers.each do |consumer|
+      - chart_labels << consumer.name
+      - chart_data << [consumer.survey_responses.count]
+
+    %div#consumer-chart
+
+    :javascript
+      var chart = bb.generate({
+        width: 0.5,
+        bindto: "#consumer-chart",
+        data: {
+          type: "bar",
+          columns: [
+              #{chart_data}
+          ]
+        },
+        axis: {
+        x: {
+          type: "category",
+          categories: #{chart_labels}
+        }
+      },
+      });
+
+    %table.table.table-bordered.sorted-table
+      %caption
+        ="All consumers (#{@consumers.count} records)"
+      %thead
+        %tr
+          %th Name
+          %th Repositories
+      %tbody
+        - @consumers.each do |consumer|
+          %tr
+            %td
+              %a{href:"/consumers/#{consumer.id}"}
+                = consumer.name
+            %td.number
+              =consumer.survey_responses.count
+
+

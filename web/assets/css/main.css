@@ -125,3 +125,10 @@ div#survey-id {
 label {
     font-weight: bold;
 }
+
+h2.chart-caption {
+    text-align: center;
+    /*font-size: 0.8em;*/
+    /*font-style: italic;*/
+    /*color: #666666;*/
+}

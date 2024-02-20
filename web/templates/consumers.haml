@@ -13,3 +13,29 @@
             = consumer.name
         %td.number
           =consumer.survey_responses.count
+
+
+- chart_data = ['Repositories']
+- chart_labels = []
+- @consumers.each do |consumer|
+  - chart_labels << consumer.name
+  - chart_data << [consumer.survey_responses.count]
+
+%div#consumer-chart
+
+:javascript
+  var chart = bb.generate({
+    bindto: "#consumer-chart",
+    data: {
+      type: "bar",
+      columns: [
+          #{chart_data}
+      ]
+    },
+    axis: {
+    x: {
+      type: "category",
+      categories: #{chart_labels}
+    }
+  },
+  });

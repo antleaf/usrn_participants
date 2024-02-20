@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class USRNParticipantsApp < Sinatra::Base
-  get '/output-types' do
+  get '/output-types/?' do
     @output_types = OutputType.all
     @page_title = "Output Types"
     haml :output_types, :layout => :'layout'

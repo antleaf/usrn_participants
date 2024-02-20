@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class USRNParticipantsApp < Sinatra::Base
-  get '/depositors' do
+  get '/depositors/?' do
     @depositors = Depositor.all
     @page_title = "Depositors"
     haml :depositors, :layout => :'layout'

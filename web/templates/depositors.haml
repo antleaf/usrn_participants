@@ -1,6 +1,6 @@
 %table.table.table-bordered.sorted-table
   %caption
-  ="All depositors (#{@depositors.count} records)"
+    ="All depositors (#{@depositors.count} records)"
   %thead
     %tr
       %th Name
@@ -13,3 +13,28 @@
             = depositor.name
         %td.number
           =depositor.survey_responses.count
+
+- chart_data = ['Repositories']
+- chart_labels = []
+- @depositors.each do |depositor|
+  - chart_labels << depositor.name
+  - chart_data << [depositor.survey_responses.count]
+
+%div#depositor-chart
+
+:javascript
+  var chart = bb.generate({
+    bindto: "#depositor-chart",
+    data: {
+      type: "bar",
+      columns: [
+          #{chart_data}
+      ]
+    },
+    axis: {
+    x: {
+      type: "category",
+      categories: #{chart_labels}
+    }
+  },
+  });

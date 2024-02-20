@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class USRNParticipantsApp < Sinatra::Base
-  get '/consumers' do
+  get '/consumers/?' do
     @consumers = Consumer.all
     @page_title = "Consumers"
     haml :consumers, :layout => :'layout'
