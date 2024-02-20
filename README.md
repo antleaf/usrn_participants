@@ -5,11 +5,16 @@ docker buildx create --use
 ```
 
 ```bash
-docker buildx build --platform linux/amd64 --push -t antleaf/usrn_discovery_survey:0.1 .
+docker buildx build --no-cache --platform linux/amd64 --push -t antleaf/usrn_discovery_survey:0.3 .
 ```
 
-## Copy data to container
+## Replicate data
+```bash
+litestream replicate data/data.sqlite s3://usrn-survey-sqlite-backups.eu-central-1.linodeobjects.com/_litestream_replicant
+```
 
+
+## Copy data to container
 ```bash
 ./copy_csv_to_cluster.zsh
 ```

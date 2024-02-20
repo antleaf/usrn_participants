@@ -2,6 +2,7 @@
 .idea
 /.env
 /data/archive
-/data/*.sqlite
+/data/*.sqlite*
 /data/*.csv
 /copy_csv_to_cluster.zsh
+/data/.data.sqlite-litestream/
