@@ -3,7 +3,7 @@
 class USRNParticipantsApp < Sinatra::Base
   get '/consumers' do
     @consumers = Consumer.all
-    @page_title = "All Consumers"
+    @page_title = "Consumers"
     haml :consumers, :layout => :'layout'
   end
 

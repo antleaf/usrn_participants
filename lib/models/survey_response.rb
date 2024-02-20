@@ -43,6 +43,10 @@ class SurveyResponse < Sequel::Model
         sr = SurveyResponse.create
         sr.survey = Survey[survey_id]
         sr.repository = Repository[row['Repository ID']]
+        if sr.repository==nil
+          LOG.error("Could not find repository with ID #{row['Repository ID']}")
+          next
+        end
         sr.timestamp = Time.parse(row[1])
         sr.role = row[4]
         sr.other_output_types = row[5]

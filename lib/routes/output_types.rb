@@ -3,7 +3,7 @@
 class USRNParticipantsApp < Sinatra::Base
   get '/output-types' do
     @output_types = OutputType.all
-    @page_title = "All Output Types"
+    @page_title = "Output Types"
     haml :output_types, :layout => :'layout'
   end
 

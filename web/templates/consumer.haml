@@ -1,3 +1,1 @@
-
-%h2="Repositories with this consumer (#{@repositories.count} records)"
-=haml :'partials/repositories_table'
+=haml :'partials/repositories_table',:locals => {:caption => "Repositories with this consumer (#{@repositories.count} records)"}

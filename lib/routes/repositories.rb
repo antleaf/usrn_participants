@@ -2,7 +2,7 @@
 
 class USRNParticipantsApp < Sinatra::Base
   get '/repositories' do
-    @page_title = 'All Repositories'
+    @page_title = 'Repositories'
     @repositories = Repository.all
     haml :repositories, :layout => :'layout'
   end

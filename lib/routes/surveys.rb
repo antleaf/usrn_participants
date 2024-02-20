@@ -2,7 +2,7 @@
 
 class USRNParticipantsApp < Sinatra::Base
   get '/surveys' do
-    @page_title = 'All Surveys'
+    @page_title = 'Surveys'
     @surveys = Survey.all
     haml :surveys, :layout => :'layout'
   end

@@ -3,7 +3,7 @@
 class USRNParticipantsApp < Sinatra::Base
   get '/depositors' do
     @depositors = Depositor.all
-    @page_title = "All Depositors"
+    @page_title = "Depositors"
     haml :depositors, :layout => :'layout'
   end
 

@@ -1,9 +1,10 @@
 %table.table.table-bordered.sorted-table
+  %caption
+    = caption
   %thead
     %tr
     %th Name
     %th Owner
-    %th Responded?
   %tbody
     - @repositories.each do |repository|
       %tr
@@ -12,7 +13,4 @@
             = repository.name
         %td
           = repository.owner
-        %td
-          -if SurveyResponse.where(repository_id: repository.id, survey_id: session[:survey_id]).count > 0
-            ✅
 
