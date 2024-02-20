@@ -21,5 +21,21 @@ class USRNParticipantsApp < Sinatra::Base
         { value: sr.mission_machine_accessible, name: 'Machine accessible' }
       ]
     end
+
+    def technologies(sr)
+      [
+        { value: sr.technologies_oai_pmh, name: 'OAI-PMH' },
+        { value: sr.technologies_rioxx, name: 'Rioxx' },
+        { value: sr.technologies_openaire_guidelines, name: 'OpenAIRE Guidelines' },
+        { value: sr.technologies_signposting, name: 'Signposting' },
+        { value: sr.technologies_resourcesync, name: 'ResourceSync' },
+        { value: sr.technologies_coar_notify, name: 'COAR Notify' },
+        { value: sr.technologies_coar_vocabularies, name: 'COAR Vocabularies' },
+        { value: sr.technologies_jav, name: 'JAV' },
+        { value: sr.technologies_credit, name: 'CRediT' },
+        { value: sr.technologies_counter, name: 'COUNTER' },
+        { value: sr.technologies_fairicat, name: 'FAIRICat' }
+      ]
+    end
   end
 end

@@ -1,21 +1,24 @@
 %div.row.field
-  %div.col-2
-    %div.field-name Name
+  %div.col-3
+    %div.field-name Repository Name
   %div.col
     =@repository.name
+- if @sr==nil
+  <h2>There is no survey response for this repository</h2>
+- else
   %div.row.field
-    %div.col-2
+    %div.col-3
       %div.field-name Date
     %div.col
       =@sr.timestamp.strftime("%Y-%m-%d")
   %div.row.field
-    %div.col-2
-      %div.field-name Role of the repository
+    %div.col-3
+      %div.field-name Please briefly describe the role(s) that the repository currently plays in your institution or community. What is its primary purpose? Does it have any other secondary functions?
     %div.col
       =process_text(@sr.role)
   %div.row.field
-    %div.col-2
-      %div.field-name Output types
+    %div.col-3
+      %div.field-name Which types of research outputs are included in your repository?
     %div.col
       %div.row
         %div.col
@@ -31,13 +34,13 @@
       %h4 Other output types
       =@sr.other_output_types
   %div.row.field
-    %div.col-2
-      %div.field-name Disciplines
+    %div.col-3
+      %div.field-name Which research communities/disciplines are most actively depositing into the repository?
     %div.col
       =process_text(@sr.disciplines)
   %div.row.field
-    %div.col-2
-      %div.field-name Depositing users
+    %div.col-3
+      %div.field-name Which of the following types of user <b>deposit</b> content <b>into</b> the repository?
     %div.col
       %div.row
         %div.col
@@ -53,8 +56,8 @@
       %h4 Other depositors
       =@sr.other_depositors
   %div.row.field
-    %div.col-2
-      %div.field-name Consuming users
+    %div.col-3
+      %div.field-name Which of the following types of user <b>consume</b> content <b>from</b> the repository (i.e.. discovering, reading or downloading)?
     %div.col
       %div.row
         %div.col
@@ -70,13 +73,14 @@
           %h4 Other consumers
           =@sr.other_consumers
   %div.row.field
-    %div.col-2
-      %div.field-name Policies
+    %div.col-3
+      %div.field-name
+        Please briefly outline any institutional policy or established practice relating to any of the following. We are looking for just the main principles (e.g. bullet points) of any policies, not their detail
     %div.col
       =process_text(@sr.policies)
 
   %div.row.field
-    %div.col-2
+    %div.col-3
       %div.field-name To what extent do you agree that each of the following is part of the repository’s mission?
     %div.col
       %table.table.table-bordered.sorted-table
@@ -99,8 +103,137 @@
                     ✅
                   -else
                     &nbsp;
-    %div.row.field
-      %div.col-2
-        %div.field-name Nelson Memo
-      %div.col
-        =@sr.nelson_awareness
+  %div.row.field
+    %div.col-3
+      %div.field-name To what extent is your institution or community aware of, and considering the implications of, the "Nelson Memo" from the Office of Science and Technology Policy (OSTP): Ensuring Free, Immediate, and Equitable Access to Federally Funded Research?
+    %div.col
+      =@sr.nelson_awareness
+  %div.row.field
+    %div.col-3
+      %div.field-name What challenges (if any) relating to how the repository can meet institutional or community priorities would you like to address in the near or medium term?
+    %div.col
+      =@sr.institutional_priority_challenges
+  %div.row.field
+    %div.col-3
+      %div.field-name Please briefly describe the management of the repository as a <b>service</b>
+    %div.col
+      =@sr.service_management
+  %div.row.field
+    %div.col-3
+      %div.field-name How is the repository <b>software</b> managed, configured or updated?
+    %div.col
+      =@sr.software_management
+  %div.row.field
+    %div.col-3
+      %div.field-name What technical development expertise (i.e. staff with software development skills) is directly available to be used by the repository service?
+    %div.col
+      =@sr.technical_expertise
+  %div.row.field
+    %div.col-3
+      %div.field-name Are you aware of the COAR Community Framework for Good Practices in Repositories?
+    %div.col
+      =humanise @sr.coar_framework_awareness
+  %div.row.field
+    %div.col-3
+      %div.field-name What challenges (if any) relating to how the repository is administered and supported would you like to try to address in the near or medium term?
+    %div.col
+      =@sr.management_challenges
+  %div.row.field
+    %div.col-3
+      %div.field-name Do you use a research management system (or CRIS system) alongside your repository (i.e. in addition to your repository)? If so, which?
+    %div.col
+      =@sr.cris
+  %div.row.field
+    %div.col-3
+      %div.field-name Please briefly describe any other systems (including local or remote systems) with which your repository is connected or integrated
+    %div.col
+      =@sr.existing_integrations
+  %div.row.field
+    %div.col-3
+      %div.field-name How many metadata records are in your repository?
+    %div.col
+      =@sr.metadata_records
+  %div.row.field
+    %div.col-3
+      %div.field-name How many items with content (not just metadata) are in your repository?
+    %div.col
+      =@sr.content_items
+  %div.row.field
+    %div.col-3
+      %div.field-name Does your repository create or register a PID for each deposited item?
+    %div.col
+      =humanise @sr.pid_minting
+  %div.row.field
+    %div.col-3
+      %div.field-name What technical challenges (if any) would you like to address in the near/medium term?
+    %div.col
+      =@sr.technical_challenges
+  %div.row.field
+    %div.col-3
+      %div.field-name To what extent is your institution or organisation interested in undertaking technical development to enhance the repository's functionality?
+    %div.col
+      %table.table.invisible-layout-table
+        %thead
+          %tr
+            %th &nbsp;
+            %th{style:"width:50px;text-align: center;"} 1
+            %th{style:"width:50px;text-align: center;"} 2
+            %th{style:"width:50px;text-align: center;"} 3
+            %th{style:"width:50px;text-align: center;"} 4
+            %th{style:"width:50px;text-align: center;"} 5
+            %th &nbsp;
+        %tbody
+          %tr
+            %td Very interested
+            - for i in 1..5
+              %td{style:"width:50px;text-align: center;"}
+                -if @sr.innovation_appetite == i
+                  ✅
+                -else
+                  &nbsp;
+            %td Not interested
+  %div.row.field
+    %div.col-3
+      %div.field-name To what extent is your institution or organisation aware of or working to adopt the FAIR Data Principles?
+    %div.col
+      =humanise @sr.fair_awareness
+  %div.row.field
+    %div.col-3
+      %div.field-name To what extent are you interested in or actively implementing the following technologies?
+    %div.col
+      %table.table.table-bordered.sorted-table
+        %thead
+          %tr
+            %th Technology
+            %th I don’t know what it is
+            %th We are considering this
+            %th We are planning to implement this
+            %th We are actively working on implementing this
+            %th We have already implemented this
+            %th We have decided not to implement this
+        %tbody
+          - technologies(@sr).each do |technology|
+            %tr
+              %td
+                =technology[:name]
+              - for i in [:not_aware,:considering,:planning_to_implement,:actively_implementing,:already_implemented,:rejected]
+                %td
+                  -if technology[:value] == i
+                    ✅
+                  -else
+                    &nbsp;
+  %div.row.field
+    %div.col-3
+      %div.field-name What (if any) other technologies are you considering or planning to use/adopt in the repository?
+    %div.col
+      =@sr.other_technologies
+  %div.row.field
+    %div.col-3
+      %div.field-name Please briefly describe any other systems (including local systems or remote systems) which you are considering integrating with or connecting to your repository
+    %div.col
+      =@sr.future_integrations
+  %div.row.field
+    %div.col-3
+      %div.field-name Is there anything else that ou would like to tell us about your repository, that you think will be useful to know in the context of the USRN Discovery project?
+    %div.col
+      =@sr.anything_else

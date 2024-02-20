@@ -106,11 +106,12 @@ div.right-aligned {
 
 .field {
     margin-bottom: 10px;
+    border-bottom: 0.5px solid #cdcdcd;
 }
 
 .field-name {
     text-align: right;
-    font-weight: bold;
+    font-weight: normal;
 }
 
 .field-name::after {
