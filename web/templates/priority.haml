@@ -1,0 +1,24 @@
+%table.table.table-bordered.sorted-table
+  %caption
+    Priorities
+  %thead
+    %tr
+      %th Priority
+      %th Strongly disagree
+      %th Disagree
+      %th Neutral
+      %th Agree
+      %th Strongly agree
+  %tbody
+    - @sr.all.each do |sr|
+      - priority = eval("sr.mission_#{@priority_id}")
+      %tr
+        %td
+          %a{href:"/repositories/#{sr.repository.id}"}
+            = sr.repository.name
+        - for i in [:strongly_disagree,:disagree,:neutral,:agree,:strongly_agree]
+          %td
+            -if priority == i
+              ✅
+            -else
+              &nbsp;

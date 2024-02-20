@@ -1,0 +1,25 @@
+%table.table.table-bordered.sorted-table
+  %caption
+    Technology adoption
+  %thead
+    %tr
+      %th Technology
+      %th I don’t know what it is
+      %th We are considering this
+      %th We are planning to implement this
+      %th We are actively working on implementing this
+      %th We have already implemented this
+      %th We have decided not to implement this
+  %tbody
+    - @sr.all.each do |sr|
+      - tech_adoption = eval("sr.technologies_#{@technology_id}")
+      %tr
+        %td
+          %a{href:"/repositories/#{sr.repository.id}"}
+            = sr.repository.name
+        - for i in [:not_aware,:considering,:planning_to_implement,:actively_implementing,:already_implemented,:rejected]
+          %td
+            -if tech_adoption == i
+              ✅
+            -else
+              &nbsp;

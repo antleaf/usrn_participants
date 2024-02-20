@@ -10,6 +10,10 @@ class USRNParticipantsApp < Sinatra::Base
       text.to_s.gsub(/_/, ' ').capitalize
     end
 
+    def dehumanise(text)
+      text.gsub(/[\s-]/,'_').downcase
+    end
+
     def missions(sr)
       [
         { value: sr.mission_keeping_track, name: 'Keep track of outputs' },

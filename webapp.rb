@@ -11,6 +11,7 @@ require './lib/routes/depositors'
 require './lib/routes/output_types'
 require './lib/routes/users'
 require './lib/routes/technologies'
+require './lib/routes/priorities'
 require 'haml'
 require 'dotenv/load'
 

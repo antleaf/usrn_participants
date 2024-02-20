@@ -33,6 +33,7 @@ def get_enum_for_technology_sheet_value(value)
   enum_symbol
 end
 
+
 # def remove_selections_from_others(others,selections)
 #   selections.each do |selection|
 #     others.delete(selection)

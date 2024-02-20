@@ -1,0 +1,16 @@
+%table.table.table-bordered.sorted-table
+  %caption
+    Priorities
+  %thead
+    %tr
+      %th Priority
+      %th Strongly disagree
+      %th Disagree
+      %th Neutral
+      %th Agree
+      %th Strongly agree
+  %tbody
+    - @data_rows.each do |row|
+      %tr
+        - row.each do |cell|
+          %td=cell
