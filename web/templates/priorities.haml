@@ -1,3 +1,33 @@
+%h2.chart-caption
+  Relative importance of priorities
+%p.text-center
+  (strongly)agree - (strongly)disagree
+- chart_data = ['Repositories']
+- chart_labels = []
+- @priority_labels.each_with_index do |priority_label,i|
+  - chart_labels << priority_label
+  - score = (@data_rows[i][4] + @data_rows[i][5]) - (@data_rows[i][1] + @data_rows[i][2])
+  - chart_data << score
+
+%div#priorities-chart
+
+:javascript
+  var chart = bb.generate({
+    bindto: "#priorities-chart",
+    data: {
+      type: "bar",
+      columns: [
+          #{chart_data}
+      ]
+    },
+    axis: {
+    x: {
+      type: "category",
+      categories: #{chart_labels}
+    }
+  },
+  });
+
 %table.table.table-bordered.sorted-table
   %caption
     Priorities
@@ -14,3 +44,35 @@
       %tr
         - row.each do |cell|
           %td=cell
+
+%hr
+
+%h2.chart-caption
+  Appetite for technical innovation
+%p.text-center
+  1 = Very Interested, 5 = Not interested
+
+%div#innovation-appetite-chart
+
+- chart_data2 = ['Repositories']
+- chart_labels2 = []
+- [1,2,3,4,5].each do |i|
+  - chart_labels2 << i
+  - chart_data2 << @sr.where(:innovation_appetite => i).count
+
+:javascript
+  var chart = bb.generate({
+    bindto: "#innovation-appetite-chart",
+    data: {
+      type: "bar",
+      columns: [
+          #{chart_data2}
+      ]
+    },
+    axis: {
+    x: {
+      type: "category",
+      categories: #{chart_labels2}
+    }
+  },
+  });
