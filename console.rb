@@ -14,4 +14,9 @@ if RESET_DB then
   populate_db_from_csv(CSV_DATA_FOLDER)
 end
 
+# puts SurveyResponse.technologies_oai_pmh_already_implemented.count
+# SurveyResponse.methods.each do |m|
+#   puts m.name
+# end
+
 LOG.info("Process completed")

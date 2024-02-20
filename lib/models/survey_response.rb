@@ -10,31 +10,31 @@ class SurveyResponse < Sequel::Model
   many_to_many :depositors, join_table: :depositors_survey_responses
   many_to_many :consumers, join_table: :consumers_survey_responses
 
-  enum :mission_keeping_track, strongly_disagree: 1, disagree: 2, neutral: 3, agree: 4, strongly_agree: 5, prefix: true
-  enum :mission_increase_discoverability, strongly_disagree: 1, disagree: 2, neutral: 3, agree: 4, strongly_agree: 5, prefix: true
-  enum :mission_capture_metadata, strongly_disagree: 1, disagree: 2, neutral: 3, agree: 4, strongly_agree: 5, prefix: true
-  enum :mission_avoid_duplication, strongly_disagree: 1, disagree: 2, neutral: 3, agree: 4, strongly_agree: 5, prefix: true
-  enum :mission_populate_pids, strongly_disagree: 1, disagree: 2, neutral: 3, agree: 4, strongly_agree: 5, prefix: true
-  enum :mission_timely_oa, strongly_disagree: 1, disagree: 2, neutral: 3, agree: 4, strongly_agree: 5, prefix: true
-  enum :mission_machine_accessible, strongly_disagree: 1, disagree: 2, neutral: 3, agree: 4, strongly_agree: 5, prefix: true
+  enum :mission_keeping_track, { strongly_disagree: 1, disagree: 2, neutral: 3, agree: 4, strongly_agree: 5 }, prefix: true
+  enum :mission_increase_discoverability, { strongly_disagree: 1, disagree: 2, neutral: 3, agree: 4, strongly_agree: 5 }, prefix: true
+  enum :mission_capture_metadata, { strongly_disagree: 1, disagree: 2, neutral: 3, agree: 4, strongly_agree: 5 }, prefix: true
+  enum :mission_avoid_duplication, { strongly_disagree: 1, disagree: 2, neutral: 3, agree: 4, strongly_agree: 5 }, prefix: true
+  enum :mission_populate_pids, { strongly_disagree: 1, disagree: 2, neutral: 3, agree: 4, strongly_agree: 5 }, prefix: true
+  enum :mission_timely_oa, { strongly_disagree: 1, disagree: 2, neutral: 3, agree: 4, strongly_agree: 5 }, prefix: true
+  enum :mission_machine_accessible, { strongly_disagree: 1, disagree: 2, neutral: 3, agree: 4, strongly_agree: 5 }, prefix: true
 
-  enum :coar_framework_awareness, not_aware: 1, aware: 2, considering: 3, implementing: 4, already_implemented: 5, prefix: true
+  enum :coar_framework_awareness, { not_aware: 1, aware: 2, considering: 3, implementing: 4, already_implemented: 5 }, prefix: true
 
-  enum :pid_minting, not_yet_but_planning_to: 1, always: 2, sometimes: 3, never: 4, dont_know: 5, prefix: true
+  enum :pid_minting, { not_yet_but_planning_to: 1, always: 2, sometimes: 3, never: 4, dont_know: 5 }, prefix: true
 
-  enum :fair_awareness, not_aware: 1, vaguely_aware: 2, considering: 3, actively_working: 4, not_relevant: 5, prefix: true
+  enum :fair_awareness, { not_aware: 1, vaguely_aware: 2, considering: 3, actively_working: 4, not_relevant: 5 }, prefix: true
 
-  enum :technologies_oai_pmh, not_aware: 1, considering: 2, planning_to_implement: 3, actively_implementing: 4, already_implemented: 5, rejected: 6, prefix: true
-  enum :technologies_rioxx, not_aware: 1, considering: 2, planning_to_implement: 3, actively_implementing: 4, already_implemented: 5, rejected: 6, prefix: true
-  enum :technologies_openaire_guidelines, not_aware: 1, considering: 2, planning_to_implement: 3, actively_implementing: 4, already_implemented: 5, rejected: 6, prefix: true
-  enum :technologies_signposting, not_aware: 1, considering: 2, planning_to_implement: 3, actively_implementing: 4, already_implemented: 5, rejected: 6, prefix: true
-  enum :technologies_resourcesync, not_aware: 1, considering: 2, planning_to_implement: 3, actively_implementing: 4, already_implemented: 5, rejected: 6, prefix: true
-  enum :technologies_coar_notify, not_aware: 1, considering: 2, planning_to_implement: 3, actively_implementing: 4, already_implemented: 5, rejected: 6, prefix: true
-  enum :technologies_coar_vocabularies, not_aware: 1, considering: 2, planning_to_implement: 3, actively_implementing: 4, already_implemented: 5, rejected: 6, prefix: true
-  enum :technologies_jav, not_aware: 1, considering: 2, planning_to_implement: 3, actively_implementing: 4, already_implemented: 5, rejected: 6, prefix: true
-  enum :technologies_credit, not_aware: 1, considering: 2, planning_to_implement: 3, actively_implementing: 4, already_implemented: 5, rejected: 6, prefix: true
-  enum :technologies_counter, not_aware: 1, considering: 2, planning_to_implement: 3, actively_implementing: 4, already_implemented: 5, rejected: 6, prefix: true
-  enum :technologies_fairicat, not_aware: 1, considering: 2, planning_to_implement: 3, actively_implementing: 4, already_implemented: 5, rejected: 6, prefix: true
+  enum :technologies_oai_pmh, {not_aware: 1, considering: 2, planning_to_implement: 3, actively_implementing: 4, already_implemented: 5, rejected: 6},:prefix=> true
+  enum :technologies_rioxx, { not_aware: 1, considering: 2, planning_to_implement: 3, actively_implementing: 4, already_implemented: 5, rejected: 6 }, prefix: true
+  enum :technologies_openaire_guidelines, { not_aware: 1, considering: 2, planning_to_implement: 3, actively_implementing: 4, already_implemented: 5, rejected: 6 }, prefix: true
+  enum :technologies_signposting, { not_aware: 1, considering: 2, planning_to_implement: 3, actively_implementing: 4, already_implemented: 5, rejected: 6 }, prefix: true
+  enum :technologies_resourcesync, { not_aware: 1, considering: 2, planning_to_implement: 3, actively_implementing: 4, already_implemented: 5, rejected: 6 }, prefix: true
+  enum :technologies_coar_notify, { not_aware: 1, considering: 2, planning_to_implement: 3, actively_implementing: 4, already_implemented: 5, rejected: 6 }, prefix: true
+  enum :technologies_coar_vocabularies, { not_aware: 1, considering: 2, planning_to_implement: 3, actively_implementing: 4, already_implemented: 5, rejected: 6 }, prefix: true
+  enum :technologies_jav, { not_aware: 1, considering: 2, planning_to_implement: 3, actively_implementing: 4, already_implemented: 5, rejected: 6 }, prefix: true
+  enum :technologies_credit, { not_aware: 1, considering: 2, planning_to_implement: 3, actively_implementing: 4, already_implemented: 5, rejected: 6 }, prefix: true
+  enum :technologies_counter, { not_aware: 1, considering: 2, planning_to_implement: 3, actively_implementing: 4, already_implemented: 5, rejected: 6 }, prefix: true
+  enum :technologies_fairicat, { not_aware: 1, considering: 2, planning_to_implement: 3, actively_implementing: 4, already_implemented: 5, rejected: 6 }, prefix: true
 
   def self.populate_from_csv(survey_id,path)
     begin

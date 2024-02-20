@@ -1,0 +1,15 @@
+%table.table.table-bordered.sorted-table
+  %thead
+    %tr
+      %th Technology
+      %th I don’t know what it is
+      %th We are considering this
+      %th We are planning to implement this
+      %th We are actively working on implementing this
+      %th We have already implemented this
+      %th We have decided not to implement this
+  %tbody
+    - @data_rows.each do |row|
+      %tr
+        - row.each do |cell|
+          %td=cell
