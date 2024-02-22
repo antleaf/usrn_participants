@@ -5,6 +5,7 @@
     %tr
     %th Name
     %th Owner
+    %th Platform
     %th Responded?
   %tbody
     - @repositories.each do |repository|
@@ -12,8 +13,8 @@
         %td
           %a{href:"/repositories/#{repository.id}"}
             = repository.name
-        %td
-          = repository.owner
+        %td= repository.owner
+        %td= repository.platform.name
         %td
           -if SurveyResponse.where(repository_id: repository.id, survey_id: session[:survey_id]).count > 0
             ✅

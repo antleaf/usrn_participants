@@ -15,6 +15,7 @@ require './lib/routes/priorities'
 require './lib/routes/scale'
 require './lib/routes/awareness'
 require './lib/routes/disciplines'
+require './lib/routes/platforms'
 require 'haml'
 require 'dotenv/load'
 

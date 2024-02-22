@@ -1,0 +1,21 @@
+-# %ul
+-#   - @platforms.each do |platform|
+-#     %li
+-#       %a{href:"/platforms/#{platform.id}"}
+-#         = platform.name
+
+%table.table.table-bordered.sorted-table
+  %caption
+    ="All Platforms (#{@platforms.count} records)"
+  %thead
+    %tr
+    %th Name
+    %th Repositories
+  %tbody
+    - @platforms.each do |platform|
+      %tr
+        %td
+          %a{href:"/platforms/#{platform.id}"}
+            = platform.name
+        %td.number= platform.repositories.count
+
