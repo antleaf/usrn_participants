@@ -3,7 +3,8 @@
     Priorities
   %thead
     %tr
-      %th Priority
+      %th Repository
+      %th Owner
       %th Strongly disagree
       %th Disagree
       %th Neutral
@@ -16,6 +17,7 @@
         %td
           %a{href:"/repositories/#{sr.repository.id}"}
             = sr.repository.name
+        %td= sr.repository.owner
         - for i in [:strongly_disagree,:disagree,:neutral,:agree,:strongly_agree]
           %td
             -if priority == i

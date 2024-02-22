@@ -49,6 +49,7 @@
   %thead
     %tr
       %th Repository
+      %th Owner
       %th OAI-PMH
       %th Rioxx
       %th OpenAIRE
@@ -67,6 +68,7 @@
         %td
           %a{href: "/repositories/#{row.repository.id}"}
             = row.repository.name
+        %td= row.repository.owner
         %td=humanise row.technologies_oai_pmh
         %td=humanise row.technologies_rioxx
         %td=humanise row.technologies_openaire_guidelines

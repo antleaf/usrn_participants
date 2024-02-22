@@ -26,5 +26,9 @@ class Repository < Sequel::Model
       LOG.error(e)
     end
   end
+
+  # def hyperlinked_name_for_table
+  #   "<a href='/repositories/#{id}'>#{owner}</a><br/>(#{name})"
+  # end
 end
 

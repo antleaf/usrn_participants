@@ -3,7 +3,8 @@
     Technology adoption
   %thead
     %tr
-      %th Technology
+      %th Repository
+      %th Owner
       %th I don’t know what it is
       %th We are considering this
       %th We are planning to implement this
@@ -17,6 +18,7 @@
         %td
           %a{href:"/repositories/#{sr.repository.id}"}
             = sr.repository.name
+        %td= sr.repository.owner
         - for i in [:not_aware,:considering,:planning_to_implement,:actively_implementing,:already_implemented,:rejected]
           %td
             -if tech_adoption == i
