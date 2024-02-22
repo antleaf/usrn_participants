@@ -20,7 +20,6 @@ body, p, ol, ul, td {
 pre {
     padding: 15px;
     background-color: #F7F7F7;
-/ / font-size: 80 %;
 }
 
 code, span.monospace {
@@ -124,6 +123,14 @@ div#survey-id {
 
 label {
     font-weight: bold;
+}
+
+.chart {
+    width: 100%;
+    /*background-color: red;*/
+    border: 2px solid #cdcdcd;
+    margin-bottom: 30px;
+    padding: 10px;
 }
 
 h2.chart-caption {

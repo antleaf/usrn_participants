@@ -1,0 +1,91 @@
+%div.chart
+  %h2.chart-caption
+    Awareness of COAR Framework
+  %div#coar-framework-chart
+  - chart_data1 = ['Repositories']
+  - chart_labels1 = ['Not aware','Aware','Considering','Implementing','Already Implemented']
+  - [1,2,3,4,5].each do |i|
+    - chart_data1 << @sr.where(:coar_framework_awareness => i).count
+  :javascript
+    var chart = bb.generate({
+      bindto: "#coar-framework-chart",
+      data: {
+        columns: [
+            #{chart_data1}
+        ]
+      },
+      axis: {
+        x: {
+          type: "category",
+          categories: #{chart_labels1}
+        }
+      }
+    });
+
+%div.chart
+  %h2.chart-caption
+    Awareness of Nelson Memo
+  %div#nelson-framework-chart
+  - chart_data1 = ['Repositories']
+  - chart_labels1 = ['Not aware','Aware; Considering implications','Actively planning to meet anticipated requirements']
+  - chart_labels1.each do |i|
+    - chart_data1 << @sr.where(:nelson_awareness => i).count
+  :javascript
+    var chart = bb.generate({
+      bindto: "#nelson-framework-chart",
+      data: {
+        columns: [
+            #{chart_data1}
+        ]
+      },
+      axis: {
+        x: {
+          type: "category",
+          categories: #{chart_labels1}
+        }
+      }
+    });
+
+%div.chart
+  %h2.chart-caption
+    Awareness of FAIR Principles
+  %div#fair-chart
+  - chart_data1 = ['Repositories']
+  - chart_labels1 = ['Not aware of FAIR','Vaguely aware of FAIR','Considering how to adopt the FAIR principles','Actively working to adopt FAIR principles','Do not think FAIR is relevant/useful']
+  - [1,2,3,4,5].each do |i|
+    - chart_labels1 << i
+    - chart_data1 << @sr.where(:fair_awareness => i).count
+  :javascript
+    var chart = bb.generate({
+      bindto: "#fair-chart",
+      data: {
+        columns: [
+            #{chart_data1}
+        ]
+      },
+      axis: {
+        x: {
+          type: "category",
+          categories: #{chart_labels1}
+        }
+      }
+    });
+
+%table.table.table-bordered.sorted-table
+  %caption
+    Responses
+  %thead
+    %tr
+      %th Repository
+      %th COAR Framework
+      %th Nelson Memo
+      %th FAIR Principles
+  %tbody
+    - @sr.each do |row|
+      %tr
+        %td
+          %a{href: "/repositories/#{row.repository.id}"}
+            = row.repository.name
+        %td= humanise row.coar_framework_awareness
+        %td= row.nelson_awareness
+        %td= humanise row.fair_awareness

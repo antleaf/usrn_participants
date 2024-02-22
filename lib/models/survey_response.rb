@@ -36,6 +36,19 @@ class SurveyResponse < Sequel::Model
   enum :technologies_counter, { not_aware: 1, considering: 2, planning_to_implement: 3, actively_implementing: 4, already_implemented: 5, rejected: 6 }, prefix: true
   enum :technologies_fairicat, { not_aware: 1, considering: 2, planning_to_implement: 3, actively_implementing: 4, already_implemented: 5, rejected: 6 }, prefix: true
 
+  def self.update_record_count_data(survey_id,path)
+    csv_data = read_csv_data(path)
+    csv_data.each do |row|
+      sr = SurveyResponse.where(survey_id: survey_id, repository_id: row['ID']).first
+      if sr
+        sr.metadata_records_count = row['Metadata Records'] unless row['Metadata Records'].nil?
+        sr.content_items_count = row['Content Items'] unless row['Content Items'].nil?
+        sr.save
+      end
+    end
+  end
+
+
   def self.populate_from_csv(survey_id,path)
     begin
       csv_data = read_csv_data(path)

@@ -20,5 +20,6 @@ def populate_db_from_csv(csv_data_folder)
   Survey.populate_from_csv("#{csv_data_folder}/surveys.csv")
   Survey.all.each do |survey|
     SurveyResponse.populate_from_csv(survey.id,"#{csv_data_folder}/#{survey.id}_responses.csv")
+    SurveyResponse.update_record_count_data(survey.id,"#{csv_data_folder}/repository_record_counts.csv")
   end
 end

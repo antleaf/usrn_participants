@@ -12,6 +12,7 @@ class USRNParticipantsApp < Sinatra::Base
       end
       @data_rows << data_row
     end
+    @sr = SurveyResponse.where(survey_id: session[:survey_id])
     haml :technologies, :layout => :'layout'
   end
 

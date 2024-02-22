@@ -81,7 +81,9 @@ DB.create_table? :survey_responses do
   String :cris
   String :existing_integrations, text: true
   String :metadata_records
+  Integer :metadata_records_count, default: 0
   String :content_items
+  Integer :content_items_count, default: 0
   Integer :pid_minting
   String :technical_challenges, text: true
   Integer :innovation_appetite

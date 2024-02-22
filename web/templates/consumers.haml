@@ -27,15 +27,14 @@
   var chart = bb.generate({
     bindto: "#consumer-chart",
     data: {
-      type: "bar",
       columns: [
           #{chart_data}
       ]
     },
     axis: {
-    x: {
-      type: "category",
-      categories: #{chart_labels}
+      x: {
+        type: "category",
+        categories: #{chart_labels}
+      }
     }
-  },
   });

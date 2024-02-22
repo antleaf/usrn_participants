@@ -1,0 +1,14 @@
+%table.table.table-bordered.sorted-table
+  %caption
+    Disciplines by repository
+  %thead
+    %tr
+      %th Repository
+      %th Disciplines
+  %tbody
+    - @sr.each do |row|
+      %tr
+        %td
+          %a{href: "/repositories/#{row.repository.id}"}
+            = row.repository.name
+        %td=humanise row.disciplines

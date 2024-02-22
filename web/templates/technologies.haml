@@ -15,3 +15,67 @@
       %tr
         - row.each do |cell|
           %td=cell
+%br
+%br
+
+%div.chart
+  %h2.chart-caption
+    Minting PIDs
+  %div#pid-chart
+  - chart_data1 = ['Repositories']
+  - chart_labels1 = ['Not yet, but planning to','Always','Sometimes','Never',"Don't know"]
+  - [1,2,3,4,5].each do |i|
+    - chart_labels1 << i
+    - chart_data1 << @sr.where(:pid_minting => i).count
+  :javascript
+    var chart = bb.generate({
+      bindto: "#pid-chart",
+      data: {
+        columns: [
+            #{chart_data1}
+        ]
+      },
+      axis: {
+        x: {
+          type: "category",
+          categories: #{chart_labels1}
+        }
+      }
+    });
+
+%table.table.table-bordered.sorted-table
+  %caption
+    Support for technologies by repository
+  %thead
+    %tr
+      %th Repository
+      %th OAI-PMH
+      %th Rioxx
+      %th OpenAIRE
+      %th Signposting
+      %th ResourceSync
+      %th Notify
+      %th COAR Vocabs
+      %th JAV
+      %th CRediT
+      %th Counter
+      %th FAIRiCat
+      %th PID minting
+  %tbody
+    - @sr.each do |row|
+      %tr
+        %td
+          %a{href: "/repositories/#{row.repository.id}"}
+            = row.repository.name
+        %td=humanise row.technologies_oai_pmh
+        %td=humanise row.technologies_rioxx
+        %td=humanise row.technologies_openaire_guidelines
+        %td=humanise row.technologies_signposting
+        %td=humanise row.technologies_resourcesync
+        %td=humanise row.technologies_coar_notify
+        %td=humanise row.technologies_coar_vocabularies
+        %td=humanise row.technologies_jav
+        %td=humanise row.technologies_credit
+        %td=humanise row.technologies_counter
+        %td=humanise row.technologies_fairicat
+        %td=humanise row.pid_minting

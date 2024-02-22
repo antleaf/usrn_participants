@@ -29,3 +29,12 @@ $('document').ready(function() {
         "columnDefs": [{targets: ['unsorted-column','actions'], orderable: false}],
     });
 });
+
+bb.defaults({
+    data: {
+        type: "bar",
+        // color: function (color, d) {
+        //     return "#6082B6";
+        // }
+    }
+});

@@ -1,0 +1,44 @@
+%div.chart
+  %h2.chart-caption
+    Metadata records and content items by repository
+  %div#metadata-records-chart
+  - chart_data1 = ['Metadata records']
+  - chart_data2 = ['Content items']
+  - chart_labels1 = []
+  - @sr.each do |row|
+    - chart_labels1 << row.repository.name
+    - chart_data1 << row.metadata_records_count
+    - chart_data2 << row.content_items_count
+  :javascript
+    var chart = bb.generate({
+      bindto: "#metadata-records-chart",
+      data: {
+        columns: [
+            #{chart_data1},
+            #{chart_data2}
+        ]
+      },
+      axis: {
+        x: {
+          type: "category",
+          categories: #{chart_labels1}
+        }
+      }
+    });
+
+%table.table.table-bordered.sorted-table
+  %caption
+    Metadata records and content items
+  %thead
+    %tr
+      %th Repository
+      %th Metadata Records
+      %th Content Items
+  %tbody
+    - @sr.each do |row|
+      %tr
+        %td
+          %a{href: "/repositories/#{row.repository.id}"}
+            = row.repository.name
+        %td.number= row.metadata_records_count
+        %td.number= row.content_items_count

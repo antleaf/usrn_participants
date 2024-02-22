@@ -53,8 +53,10 @@ td.field-name {
 
 td.number {
     text-align: right;
-    font-family: Courier, monospace;
     white-space: nowrap;
+    font-family: 'Roboto Mono', monospace;
+    font-weight: normal;
+    font-size: 90% !important;
 }
 
 td.nowrap {
