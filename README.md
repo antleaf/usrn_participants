@@ -5,7 +5,7 @@ docker buildx create --use
 ```
 
 ```bash
-docker buildx build --no-cache --platform linux/amd64 --push -t antleaf/usrn_discovery_survey:0.7 .
+docker buildx build --no-cache --platform linux/amd64 --push -t antleaf/usrn_discovery_survey:0.8 .
 ```
 
 ## Replicate data

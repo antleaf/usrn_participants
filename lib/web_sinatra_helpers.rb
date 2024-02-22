@@ -3,7 +3,9 @@
 class USRNParticipantsApp < Sinatra::Base
   helpers do
     def process_text(text)
-      text.gsub(/(\r\n|\n|\r)/, '<br />')
+      unless text.nil?
+        text.gsub(/(\r\n|\n|\r)/, '<br />')
+        end
     end
 
     def humanise(text)
